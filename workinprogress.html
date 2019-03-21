@@ -86,6 +86,8 @@
                                 </div>
                                 <div id="map"></div>
                                 <script>
+				var latitude	
+				var longitude
                                   function initMap() {
                                     var directionsDisplay = new google.maps.DirectionsRenderer;
                                     var directionsService = new google.maps.DirectionsService;
@@ -97,8 +99,8 @@
                                     {
                                       navigator.geolocation.getCurrentPosition(function(position)
                                       {                                                              
-                                        var latitude = position.coords.latitude;                    
-                                        var longitude = position.coords.longitude;
+                                        latitude = position.coords.latitude;                    
+                                        longitude = position.coords.longitude;
 					calculateAndDisplayRoute(directionsService, directionsDisplay);
                                       }
                                                                                )}
