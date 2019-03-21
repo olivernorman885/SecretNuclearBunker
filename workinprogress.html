@@ -93,24 +93,27 @@
                                       zoom: 14,
                                       center: {lat: 51.672831, lng: 0.257151}
                                     });
-                                    directionsDisplay.setMap(map);
-                                    calculateAndDisplayRoute(directionsService, directionsDisplay);
-                                    document.getElementById('mode').addEventListener('change', function() {
-                                      calculateAndDisplayRoute(directionsService, directionsDisplay);
-                                    });
-                                  }
-
-                                        
-                                  function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-                                    var selectedMode = document.getElementById('mode').value;
-                                    if (navigator.geolocation)
+					if (navigator.geolocation)
                                     {
                                       navigator.geolocation.getCurrentPosition(function(position)
                                       {                                                              
                                         var latitude = position.coords.latitude;                    
                                         var longitude = position.coords.longitude;
+					calculateAndDisplayRoute(directionsService, directionsDisplay);
                                       }
                                                                                )}
+                                    directionsDisplay.setMap(map);
+                                    calculateAndDisplayRoute(directionsService, directionsDisplay);
+                                    document.getElementById('mode').addEventListener('change', function() {
+                                      calculateAndDisplayRoute(directionsService, directionsDisplay);
+                                    });
+					  
+                                  }
+
+                                        
+                                  function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+                                    var selectedMode = document.getElementById('mode').value;
+
                                     directionsService.route({
                                       origin: {lat: latitude, lng: longitude},
                                       destination: {lat: 51.672831, lng: 0.257151},
