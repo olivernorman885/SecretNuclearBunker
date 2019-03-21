@@ -34,7 +34,7 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="site-logo">
-							<h2><a href="#">Secret Nuclear Bunker Locator</a></h2>
+							<h2><a href="#">Secret Nuclear Bunker Locator!</a></h2>
 							<p>Just 20 miles from Charing Cross!!!</p>
 						</div>
 					</div>
@@ -88,9 +88,10 @@
                                 <script>
 				var latitude	
 				var longitude
+				var directionsService
                                   function initMap() {
                                     var directionsDisplay = new google.maps.DirectionsRenderer;
-                                    var directionsService = new google.maps.DirectionsService;
+                                    directionsService = new google.maps.DirectionsService;
                                     var map = new google.maps.Map(document.getElementById('map'), {
                                       zoom: 14,
                                       center: {lat: 51.672831, lng: 0.257151}
@@ -123,6 +124,7 @@
                                     }, function(response, status) {
                                       if (status == 'OK') {
                                         directionsDisplay.setDirections(response);
+					document.getElementById("steps").innerHTML = response.routes[0].legs[0].steps[0].instructions
                                       } else {
                                         window.alert('Directions request not successful');
                                       }
@@ -134,6 +136,7 @@
                                 </script>
                             </div>
 						</section>
+						<p id="steps"></p>
 					</div>
 				</div>
 			</div>
